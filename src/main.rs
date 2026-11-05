@@ -12,6 +12,7 @@ mod access;
 mod menu;
 
 use std::io;
+use crate::menu::handle_menu;
 
 fn main() {
     println!("Bem vindo!");
@@ -33,10 +34,10 @@ fn main() {
         let input_ref = input.trim();
 
         match input_ref {
-            "1" => unimplemented!(),
-            "2" => unimplemented!(),
-            "3" => unimplemented!(),
-            "4" => unimplemented!(),
+            "1" => handle_menu(input_ref),
+            "2" => handle_menu(input_ref),
+            "3" => handle_menu(input_ref),
+            "4" => handle_menu(input_ref),
             "5" => exit = true,
             _ => println!("Opção invalida, por favor selecione novamente.")
         }
