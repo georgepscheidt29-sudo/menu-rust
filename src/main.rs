@@ -7,6 +7,9 @@ de utilizar o bloco impl para funções associadas
 Diretamente copiado do pdf do trabalho para facilitar implementação
 TODO: Apagar antes de enviar
 */
+mod file;
+mod access;
+mod menu;
 
 use std::io;
 
@@ -35,9 +38,9 @@ fn main() {
             "3" => unimplemented!(),
             "4" => unimplemented!(),
             "5" => exit = true,
-            _ => println!("{} não é uma opção, por favor selecione novamente.", input)
+            _ => println!("Opção invalida, por favor selecione novamente.")
         }
     }
-    
+
     println!("Exiting...");
 }
