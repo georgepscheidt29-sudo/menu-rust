@@ -16,7 +16,28 @@ fn main() {
     let mut exit: bool = false;
 
     while !exit {
+
+        println!("Selecione uma opção abaixo: \n
+        1. Criar Novo Objeto\n
+        2. Atualizar Objeto Existente\n
+        3. Deletar Objeto\n
+        4. Ler Objetos\n
+        5. Sair");
+
         let mut input = String::new();
         io::stdin().read_line(&mut input).unwrap_or_default();
+
+        let input_ref = input.trim();
+
+        match input_ref {
+            "1" => unimplemented!(),
+            "2" => unimplemented!(),
+            "3" => unimplemented!(),
+            "4" => unimplemented!(),
+            "5" => exit = true,
+            _ => println!("{} não é uma opção, por favor selecione novamente.", input)
+        }
     }
+    
+    println!("Exiting...");
 }
