@@ -60,6 +60,7 @@ impl Usuario {
 
                 println!("Membro {} removido de {}", gid, self.nome);
                 removido = true;
+                break
             }
         }
 
@@ -103,6 +104,7 @@ impl Grupo {
 
                 println!("Membro {} removido de {}", uid, self.nome);
                 removido = true;
+                break
             }
         }
         if !removido {

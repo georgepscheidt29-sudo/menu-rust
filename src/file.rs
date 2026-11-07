@@ -67,10 +67,16 @@ impl Diretorio {
     }
 
     pub fn remove_arquivo(&mut self, nome_arquivo: String) {
+        let mut removido: bool = false;
         for i in 0..self.arquivos.len() {
             if nome_arquivo == self.arquivos[i].nome {
+                removido = true;
                 self.arquivos.remove(i);
+                break;
             }
+        }
+        if !removido {
+            println!("Arquivo {} não existe dentro do diretório {}", nome_arquivo, self.nome);
         }
     }
 }
