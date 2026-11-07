@@ -79,4 +79,12 @@ impl Diretorio {
             println!("Arquivo {} não existe dentro do diretório {}", nome_arquivo, self.nome);
         }
     }
+
+    pub fn listar_conteudo(&self) {
+        println!("Diretorio {} contem {} arquivos", self.nome, self.arquivos.len());
+        println!("Veja mais a baixo: ");
+        for i in &self.arquivos {
+            println!("{} ... {} bytes", self.nome, i.tamanho,);
+        }
+    }
 }
