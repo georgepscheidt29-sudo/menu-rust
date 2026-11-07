@@ -7,7 +7,7 @@ mod menu;
 mod helper;
 
 use std::io;
-use crate::menu::handle_menu;
+use crate::menu::{menu_arquivo, menu_diretorio, menu_usuario};
 
 fn main() {
     println!("Bem vindo!");
@@ -17,10 +17,10 @@ fn main() {
     while !exit {
 
         println!("Selecione uma opção abaixo: \n
-        1. Criar Novo Objeto\n
-        2. Atualizar Objeto Existente\n
-        3. Deletar Objeto\n
-        4. Ler Objetos\n
+        1. Usuarios\n
+        2. Grupos\n
+        3. Arquivos\n
+        4. Diretorios\n
         5. Sair");
 
         let mut input = String::new();
@@ -28,12 +28,13 @@ fn main() {
 
         let input_as_int: u32 = input.trim().parse().unwrap_or_default();
 
-        if input_as_int > 0 && input_as_int < 5 {
-            handle_menu(input_as_int);
-        } else if input_as_int == 5 {
-            exit = true;
-        } else {
-            println!("Opção Invalida, digite um inteiro de 1 a 5");
+        match input_as_int {
+            1 => menu_usuario(),
+            2 => menu_diretorio(),
+            3 => menu_arquivo(),
+            4 => menu_diretorio(),
+            5 => exit = true,
+            _ => println!("Opção Invalida, digite um inteiro entre 1 e 5")
         }
     }
 
