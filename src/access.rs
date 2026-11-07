@@ -57,7 +57,7 @@ impl Usuario {
             if gid == self.grupos_ids[i] {
                 self.grupos_ids.remove(i);
 
-                println!("Membro {} removido de {}", gid, self.nome);
+                println!("Grupo {} removido de {}", gid, self.nome);
 
                 break
             }
@@ -88,7 +88,12 @@ impl Grupo {
     }
 
     pub fn adiciona_membro(&mut self, uid: u16) {
-        self.membros_ids.push(uid);
+        if self.membros_ids.contains(&uid) {
+            println!("O membro: {} já existe", uid);
+        } else {
+            self.membros_ids.push(uid);
+            println!("Membro {} adicionado", uid);
+        }
     }
 
     pub fn remove_membro(&mut self, uid: u16) {

@@ -1,11 +1,10 @@
 use crate::access::Permissao;
-use std::io;
 pub struct Arquivo {
-    nome: String,
-    tamanho: u64,
-    permissoes: (Permissao, Permissao, Permissao),
-    uid_dono: u16,
-    gid_grupo: u16
+    pub nome: String,
+    pub tamanho: u64,
+    pub permissoes: (Permissao, Permissao, Permissao),
+    pub uid_dono: u16,
+    pub gid_grupo: u16
 
 }
 
@@ -44,10 +43,10 @@ impl Arquivo {
 }
 
 pub struct Diretorio {
-    nome: String,
-    arquivos: Vec<Arquivo>,
-    permissoes: (Permissao, Permissao, Permissao),
-    uid_dono: u16
+    pub nome: String,
+    pub arquivos: Vec<Arquivo>,
+    pub permissoes: (Permissao, Permissao, Permissao),
+    pub uid_dono: u16
 }
 
 impl Diretorio {
@@ -84,7 +83,7 @@ impl Diretorio {
         println!("Diretorio {} contem {} arquivos", self.nome, self.arquivos.len());
         println!("Veja mais a baixo: ");
         for i in &self.arquivos {
-            println!("{} ... {} bytes", self.nome, i.tamanho,);
+            println!("{} ... {} bytes", i.nome, i.tamanho);
         }
     }
 }
