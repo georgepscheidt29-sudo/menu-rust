@@ -53,10 +53,18 @@ impl Usuario {
         }
     }
     pub fn remove_grupo(&mut self, gid: u16) {
+        let mut removido: bool = false;
         for i in 0..self.grupos_ids.len() {
-            if usize::from(gid) == i {
+            if gid == self.grupos_ids[i] {
                 self.grupos_ids.remove(i);
+
+                println!("Membro {} removido de {}", gid, self.nome);
+                removido = true;
             }
+        }
+
+        if !removido {
+            println!("Usuario {} já não pertence ao grupo {}", gid, self.nome);
         }
     }
     pub fn listar_grupos(&self) {
