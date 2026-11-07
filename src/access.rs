@@ -44,7 +44,7 @@ impl Usuario {
             grupos_ids,
         }
     }
-    pub fn adicionar_grupo(&mut self, gid: u16) {
+    pub fn adiciona_grupo(&mut self, gid: u16) {
         if self.grupos_ids.contains(&gid) {
             println!("O grupo: {} já existe", gid);
         } else {
@@ -60,8 +60,9 @@ impl Usuario {
         }
     }
     pub fn listar_grupos(&self) {
-        for y in self.grupos_ids {
-            println!("Lista de grupos existentes {}", self.grupos_ids)
+        println!("Grupos do usuario {}", self.nome);
+        for i in &self.grupos_ids {
+            println!("{}", i)
         }
     }
 }
@@ -69,5 +70,43 @@ pub struct Grupo {
     nome: String,
     gid: u16,
     membros_ids: Vec<u16>
+}
+
+impl Grupo {
+    pub fn new(nome: String, gid: u16) -> Grupo {
+        let membros_ids: Vec<u16> = Vec::new();
+
+        Grupo {
+            nome,
+            gid,
+            membros_ids
+        }
+    }
+
+    pub fn adiciona_membro(&mut self, uid: u16) {
+        self.membros_ids.push(uid);
+    }
+
+    pub fn remove_membro(&mut self, uid: u16) {
+        let mut removido: bool = false;
+        for i in 0..self.membros_ids.len() {
+            if uid == self.membros_ids[i] {
+                self.membros_ids.remove(i);
+
+                println!("Membro {} removido de {}", uid, self.nome);
+                removido = true;
+            }
+        }
+        if !removido {
+            println!("Usuario {} já não pertence ao grupo {}", uid, self.nome);
+        }
+    }
+
+    pub fn listar_membros(&self) {
+        println!("Lista de membros do grupo {}", self.nome);
+        for i in &self.membros_ids {
+            println!("{}", i);
+        }
+    }
 }
 
