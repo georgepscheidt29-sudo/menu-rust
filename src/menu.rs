@@ -1,12 +1,12 @@
 use std::io;
 
-pub fn handle_menu(mode: &str) {
+pub fn handle_menu(mode: u32) {
     let mut acao: String = String::new();
     let mut input: String = String::new();
     match mode {
-        "1" => acao = String::from("criado"),
-        "2" => acao = String::from("atualizado"),
-        "3" => acao = String::from("deletado"),
+        1 => acao = String::from("criado"),
+        2 => acao = String::from("atualizado"),
+        3 => acao = String::from("deletado"),
         _ => acao = String::from("lido"),
     }
 

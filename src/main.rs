@@ -26,17 +26,16 @@ fn main() {
         let mut input = String::new();
         io::stdin().read_line(&mut input).unwrap_or_default();
 
-        let input_ref = input.trim();
+        let input_as_int: u32 = input.trim().parse().unwrap_or_default();
 
-        match input_ref {
-            "1" => handle_menu(input_ref),
-            "2" => handle_menu(input_ref),
-            "3" => handle_menu(input_ref),
-            "4" => handle_menu(input_ref),
-            "5" => exit = true,
-            _ => println!("Opção invalida, por favor selecione novamente.")
+        if input_as_int > 0 && input_as_int < 5 {
+            handle_menu(input_as_int);
+        } else if input_as_int == 5 {
+            exit = true;
+        } else {
+            println!("Opção Invalida, digite um inteiro de 1 a 5");
         }
     }
 
-    println!("Exiting...");
+    println!("Fechando o programa...");
 }
