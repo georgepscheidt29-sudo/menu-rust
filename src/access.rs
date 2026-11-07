@@ -31,9 +31,9 @@ impl Permissao {
 }
 
 pub struct Usuario {
-    nome: String,
-    uid: u16,
-    grupos_ids: Vec<u16>
+    pub nome: String,
+    pub uid: u16,
+    pub grupos_ids: Vec<u16>
 }
 impl Usuario {
     pub fn new(nome: String, uid: u16) -> Usuario {
@@ -53,19 +53,14 @@ impl Usuario {
         }
     }
     pub fn remove_grupo(&mut self, gid: u16) {
-        let mut removido: bool = false;
         for i in 0..self.grupos_ids.len() {
             if gid == self.grupos_ids[i] {
                 self.grupos_ids.remove(i);
 
                 println!("Membro {} removido de {}", gid, self.nome);
-                removido = true;
+
                 break
             }
-        }
-
-        if !removido {
-            println!("Usuario {} já não pertence ao grupo {}", gid, self.nome);
         }
     }
     pub fn listar_grupos(&self) {
@@ -76,9 +71,9 @@ impl Usuario {
     }
 }
 pub struct Grupo {
-    nome: String,
-    gid: u16,
-    membros_ids: Vec<u16>
+    pub nome: String,
+    pub gid: u16,
+    pub membros_ids: Vec<u16>
 }
 
 impl Grupo {
@@ -97,18 +92,13 @@ impl Grupo {
     }
 
     pub fn remove_membro(&mut self, uid: u16) {
-        let mut removido: bool = false;
         for i in 0..self.membros_ids.len() {
             if uid == self.membros_ids[i] {
                 self.membros_ids.remove(i);
 
                 println!("Membro {} removido de {}", uid, self.nome);
-                removido = true;
                 break
             }
-        }
-        if !removido {
-            println!("Usuario {} já não pertence ao grupo {}", uid, self.nome);
         }
     }
 
